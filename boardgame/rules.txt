@@ -1,0 +1,6 @@
+có n số người chơi lượt chơi tính theo chiều kim đồng hồ, người độc tài sẽ được tính theo lượt chơi
+Với mỗi lượt của người độc tài, bốc 1 lá bài sự kiện , đọc nó lên và cho mọi người vote
+VD: lá sự kiện là: Ai có thể là người sẽ bỏ rơi bạn bè vào những tình huống khó khăn => mọi người sẽ vote ai là người có khả năng nhất , ai có câu trả lời giống với người chơi làm kẻ độc tài thì sẽ được cộng điểm 
+
+
+

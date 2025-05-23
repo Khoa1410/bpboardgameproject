@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dictator Game</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Dictator Game</h1>
+
+    <div id="setup">
+        <label for="numPlayers">The Number of Players:</label>
+        <input type="number" id="numPlayers">
+        <button onclick="generateNameInputs()">Continue</button>
+        <div id="nameInputs"></div>
+        <button onclick="startGame()">Start</button>
+    </div>
+
+    <div id="game" style="display: none;">
+        <h2 id="dictatorDisplay"></h2>
+        <p id="eventCard"></p>
+        <div id="voteArea"></div>
+        <button onclick="submitVotes()">Submit Votes</button>
+        <h3>Điểm số:</h3>
+        <ul id="scoreList"></ul>
+        <button onclick="nextTurn()">Next Turn</button>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffa8;
+}
+
+.button {
+    background-color: #04AA6D;
+    color: white;
+}
+
+#voteArea select {
+    margin-bottom: 10px;
+}
