@@ -1,14 +1,19 @@
-from flask import render_template
+from flask import render_template, Flask, jsonify
 from game import app
 from utils import 
 
 
-@app.route("/")
+@app.route("/", method = ['POST'])
 
 def home():
     cates = utils.load_()
 
     return  render_template('index.html')
+
+def player_number():
+    data = request.get_json()
+    numPlayers = float
+    
 
 
 
