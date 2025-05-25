@@ -1,6 +1,7 @@
 from data.players_name import randchoice
 from flask import Flask, jsonify, request, render_template
-from data.data import nameList, event
+from data.data import randomChoice
+from data.chose_player import score_data
 
 app = Flask(__name__)
 
@@ -11,9 +12,20 @@ def get_templates():
 
 @app.route("/Random-Player", methods=["POST"])
 def random_data():
-    chosen_name = randchoice(nameList)
-    chosen_event = randchoice(event)    
-    return jsonify({"namevalue": f"chosen_name"})
+    chosen_name = randomChoice()
+    chosen_event = randomChoice()    
+    return jsonify({"namevalue": chosen_name,
+                    "eventvalue": chosen_event})
 
+@app.route('/game')
+def game_page():
+    return render_template("game.html")
+
+@app.route("/data-score", method=["POST"])
+def score_json():
+    score_name = score_data("name")
+    score_value = score_data("point")
+    return jsonify({})
 if __name__ == '__main__':
     app.run(debug = True)
+

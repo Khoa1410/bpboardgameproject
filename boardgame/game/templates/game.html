@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kết quả</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="playerName"></h1>
+    <button id="nextBtn">Tiếp tục</button>
+
+    <script>
+        const playerDisplay = document.getElementById("playerName");
+        const nextBtn = document.getElementById("nextBtn");
+
+        // Lấy thông tin đầu tiên từ localStorage khi chuyển sang
+        let player = localStorage.getItem("chosenPlayer") || "Không có dữ liệu";
+        let count = parseInt(localStorage.getItem("playCount") || "1");
+        playerDisplay.textContent = `Người chơi được chọn: ${player} (Lượt ${count}/9)`;
+
+        nextBtn.addEventListener("click", () => {
+            if (count >= 9) {
+                playerDisplay.textContent = "Đã hoàn thành 9 lượt chơi.";
+                nextBtn.disabled = true;
+                return;
+            }
+
+            fetch("/Random-Player", { method: "POST" })
+                .then(res => res.json())
+                .then(data => {
+                    count++;
+                    localStorage.setItem("playCount", count);
+                    localStorage.setItem("chosenPlayer", data.namevalue);
+                    playerDisplay.textContent = `Người chơi được chọn: ${data.namevalue} (Lượt ${count}/9)`;
+
+                    if (count >= 9) {
+                        nextBtn.textContent = "Hoàn thành";
+                        nextBtn.disabled = true;
+                    }
+                })
+                .catch(error => {
+                    alert("Lỗi: " + error);
+                });
+        });
+    </script>
+</body>
+</html>

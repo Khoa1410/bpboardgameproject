@@ -1,19 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const randomPlayer = document.getElementById("runTaskBtn");
-    const result = document.getElementById("result");
+    const randomPlayer = document.getElementById("stgame");
 
-    btn.addEventListener("click", () => {
-        result.textContent = "Đang chọn số...";
-
+    randomPlayer.addEventListener("click", () => {
         fetch("/Random-Player", {
             method: "POST"
         })
         .then(res => res.json())
         .then(data => {
-            result.textContent = data.result;
+            // Lưu thông tin vào localStorage
+            localStorage.setItem("chosenPlayer", data.namevalue);
+            localStorage.setItem("playCount", 1);
+            // Chuyển trang
+            window.location.href = "/game";
         })
         .catch(error => {
-            result.textContent = "Lỗi: " + error;
+            alert("Lỗi: " + error);
         });
     });
 });
