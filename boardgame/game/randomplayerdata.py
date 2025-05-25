@@ -25,7 +25,8 @@ def game_page():
 def score_json():
     score_name = score_data("name")
     score_value = score_data("point")
-    return jsonify({})
+    return jsonify({"Score_Name": score_name,
+                    "Score_Value": score_value})
 if __name__ == '__main__':
     app.run(debug = True)
 
