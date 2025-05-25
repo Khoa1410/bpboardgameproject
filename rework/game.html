@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap" rel="stylesheet">
+    <style>
+        .hidden { display: none; }
+        .opening-title {
+            font-size: 4rem;
+            color: #333;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="opening">
+        <div class="opening-title">Dictator Game</div>
+        <h3>Created by Vu Tran Khoa</h3>
+        <button class="start-btn" id="startBtn">Start</button>
+    </div>
+
+
+    <div id="gameScreen" class="hidden">
+        <h1 id="playerName"></h1>
+        <div id="question"></div>
+        <div id="name"></div>
+        <button id="nextBtn">Tiếp tục</button>
+    </div>
+    
+    <script src="random.js"></script>
+    <script>
+        document.getElementById('startBtn').onclick = function() {
+            document.getElementById('opening').classList.add('hidden');
+            document.getElementById('gameScreen').classList.remove('hidden');
+        };
+    </script>
+</body>
+</html>
